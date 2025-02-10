@@ -60,21 +60,4 @@ if __name__ == "__main__":
 
         print(f"Ошибка: {e}")
 
-import os
-from flask import Flask
-from threading import Thread
-from bot import bot
-
-app = Flask(__name__)
-
-@app.route('/')
-def home():
-    return "Bot is running!"
-
-if __name__ == '__main__':
-    print("Starting bot and Flask server...") 
-    Thread(target=bot.infinity_polling, daemon=True).start()
-    port = int(os.environ.get("PORT", 8080))  
-    print(f"Running Flask server on port {port}")  
-    app.run(host="0.0.0.0", port=port)
 
